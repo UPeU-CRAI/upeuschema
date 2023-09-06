@@ -1,5 +1,5 @@
 # upeuSchema
-Esquemas y Object Class LDAP personalizado para la Universidad Peruana Unión (UPeU)
+Esquemas y Object Class LDAP personalizados para la Universidad Peruana Unión (UPeU)
 
 Shield: [![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]
 
