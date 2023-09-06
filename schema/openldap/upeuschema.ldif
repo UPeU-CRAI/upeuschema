@@ -1,0 +1,108 @@
+# UPeU Schema Board
+# Esquema personalizado para la Universidad Peruana Unión (UPeU)
+#
+# upeuSchema (20230906) - v0.1.0 - Ing. Juan Alberto Sánchez - Esquema de un solo objectClass para todos los atributos
+#
+# $Customized for OpenLDAP$
+################################################################################
+#
+# dn: cn=schema
+#
+################################################################################
+#
+dn: cn=upeuSchema,cn=schema,cn=config
+objectClass: olcSchemaConfig
+cn: upeuSchema
+# olcObjectIdentifier: 1.3.6.1.4.1.9839.1000
+#
+################################################################################
+# Atributos para persona
+olcAttributeTypes: ( 1.3.6.1.4.1.9839.1000.1.1
+    NAME 'upeuGender'
+    DESC 'Género del estudiante (M para mujer, H para hombre)'
+    EQUALITY caseIgnoreMatch
+    SYNTAX '1.3.6.1.4.1.1466.115.121.1.15' )
+#
+olcAttributeTypes: ( 1.3.6.1.4.1.9839.1000.1.2
+    NAME 'upeuBirthDate'
+    DESC 'Fecha de cumpleaños del estudiante (en formato yyyy-mm-dd)'
+    EQUALITY caseIgnoreMatch
+    SYNTAX '1.3.6.1.4.1.1466.115.121.1.15' )
+#
+olcAttributeTypes: ( 1.3.6.1.4.1.9839.1000.1.3
+    NAME 'upeuCardBarcode'
+    DESC 'Código de barras del carnet universitario del estudiante'
+    EQUALITY caseIgnoreMatch
+    SYNTAX '1.3.6.1.4.1.1466.115.121.1.15' )
+#
+olcAttributeTypes: ( 1.3.6.1.4.1.9839.1000.1.4
+    NAME 'upeuContractExpiryDate'
+    DESC 'Fecha de expiración de contrato (en formato yyyy-mm-dd)'
+    EQUALITY caseIgnoreMatch
+    SYNTAX '1.3.6.1.4.1.1466.115.121.1.15' )
+#
+################################################################################
+# Atributos para la facultad
+olcAttributeTypes: ( 1.3.6.1.4.1.9839.1000.1.20
+    NAME 'upeuFacultyCode'
+    DESC 'Código de la facultad (F3948,1.2.34, 23424, etc)'
+    EQUALITY caseIgnoreMatch
+    SUBSTR caseIgnoreSubstringsMatch
+    SYNTAX '1.3.6.1.4.1.1466.115.121.1.15' )
+#
+olcAttributeTypes: ( 1.3.6.1.4.1.9839.1000.1.21
+    NAME 'upeuFacultyName'
+    DESC 'Nombre completo de la facultad (Facultad de Ingenieria y Arquitectura, etc)'
+    EQUALITY caseIgnoreMatch
+    SUBSTR caseIgnoreSubstringsMatch
+    SYNTAX '1.3.6.1.4.1.1466.115.121.1.15' )
+#
+olcAttributeTypes: ( 1.3.6.1.4.1.9839.1000.1.22
+    NAME 'upeuFacultyShortName'
+    DESC 'Nombre corto de la facultad (FIA, FACTEO, etc)'
+    EQUALITY caseIgnoreMatch
+    SUBSTR caseIgnoreSubstringsMatch
+    SYNTAX '1.3.6.1.4.1.1466.115.121.1.15' )
+#
+################################################################################
+# Atributos para el programa académico
+olcAttributeTypes: ( 1.3.6.1.4.1.9839.1000.1.30
+    NAME 'upeuAcademicProgrammeCode'
+    DESC 'Códifo del Programa académico (PA3948,1.2.34, 23424, etc)'
+    EQUALITY caseIgnoreMatch
+    SUBSTR caseIgnoreSubstringsMatch
+    SYNTAX '1.3.6.1.4.1.1466.115.121.1.15' )
+#
+olcAttributeTypes: ( 1.3.6.1.4.1.9839.1000.1.31
+    NAME 'upeuAcademicProgrammeName'
+    DESC 'Nombre completo del Programa académico (Ingeniería de Sistemas, etc)'
+    EQUALITY caseIgnoreMatch
+    SUBSTR caseIgnoreSubstringsMatch
+    SYNTAX '1.3.6.1.4.1.1466.115.121.1.15' )
+#
+olcAttributeTypes: ( 1.3.6.1.4.1.9839.1000.1.32
+    NAME 'upeuAcademicProgrammeShortName'
+    DESC 'Nombre corto del Programa académico (P27, etc)'
+    EQUALITY caseIgnoreMatch
+    SUBSTR caseIgnoreSubstringsMatch
+    SYNTAX '1.3.6.1.4.1.1466.115.121.1.15' )
+#
+olcAttributeTypes: ( 1.3.6.1.4.1.9839.1000.1.33
+    NAME 'upeuAcademicProgrammeType'
+    DESC 'Tipo de Programa académico (pregrado, maestría, etc)'
+    EQUALITY caseIgnoreMatch
+    SUBSTR caseIgnoreSubstringsMatch
+    SYNTAX '1.3.6.1.4.1.1466.115.121.1.15' )
+#
+################################################################################
+# Clase de objeto personalizada para UPeU
+olcObjectClasses: ( 1.3.6.1.4.1.9839.1000.2.1
+    NAME 'upeuSchema'
+    DESC 'Clase de objeto personalizada para esquema UPeU'
+    AUXILIARY
+    MAY (
+        upeuGender $ upeuCardBarcode $ upeuContractExpiryDate $
+        upeuFacultyCode $ upeuFacultyName $ upeuFacultyShortName $
+        upeuAcademicProgrammeCode $ upeuAcademicProgrammeName $
+        upeuAcademicProgrammeShortName $ upeuAcademicProgrammeType
+    ) )
