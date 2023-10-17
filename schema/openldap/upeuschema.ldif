@@ -149,7 +149,7 @@ olcObjectClasses: ( 1.3.6.1.4.1.9839.1000.2.1
     MAY (
         upeuGender $ 
         upeuDateOfBirth $
-        upeuCardBarcode $
+        upeuCardNumber $
         upeuContractExpiryDate $
         upeuMail2 $
         upeuCountryOfCitizenship $
